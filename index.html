@@ -3,31 +3,437 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>REARCAR COFFEE｜あなたの毎日に、小さな幸せを。</title>
+  <title>REARCAR COFFEE｜厳選3種のスペシャルティコーヒーセット</title>
   <link rel="icon" type="image/jpeg" href="images/logo.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
   <style>
-    body {
-      font-family: 'Noto Serif JP', serif;
+    :root {
+      --main-color: #003049;
+      --accent-color: #f77f00;
+      --bg-color: #fdfdfd;
+      --text-color: #222;
+      --gray: #ddd;
+      --highlight: #fcb75d;
     }
+
+    body {
+      margin: 0;
+      font-family: 'Noto Serif JP', serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    header {
+      background: white;
+      border-bottom: 1px solid var(--gray);
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      color: var(--main-color);
+      margin: 0;
+    }
+
+    nav a {
+      margin-left: 30px;
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
     .hero {
-      background-image: url('images/AdobeStock_188913900.jpg');
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/AdobeStock_93001195.jpg');
       background-size: cover;
       background-position: center;
-      padding: 120px 20px;
+      padding: 150px 20px;
       text-align: center;
       color: #ffffff;
+      position: relative;
     }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
     .hero h2 {
       font-size: 3rem;
       margin: 0 auto 20px;
       color: #ffffff;
     }
+
     .hero p {
       font-size: 1.2rem;
-      margin: 0 auto;
+      margin: 0 auto 30px;
       color: #ffffff;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .cta-button:hover {
+      background: #e67300;
+      transform: translateY(-2px);
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: 80px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .section h3 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: var(--main-color);
+    }
+
+    .intro {
+      padding: 40px 20px;
+      background: #f9f9f9;
+    }
+
+    .coffee-set {
+      padding: 80px 0;
+      background: linear-gradient(to bottom, #fff, #f9f9f9);
+    }
+
+    .coffee-set-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .coffee-set-title h2 {
+      font-size: 2.5rem;
+      color: var(--main-color);
+      margin-bottom: 10px;
+    }
+
+    .coffee-set-title p {
+      font-size: 1.2rem;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .coffee-set-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .coffee-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+
+    .coffee-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .coffee-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .coffee-card-content {
+      padding: 20px;
+    }
+
+    .coffee-card h4 {
+      font-size: 1.5rem;
+      color: var(--main-color);
+      margin: 0 0 10px;
+    }
+
+    .coffee-card .subtitle {
+      color: var(--accent-color);
+      font-weight: 600;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .coffee-card p {
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .coffee-card .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--main-color);
+    }
+
+    .coffee-card .badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--highlight);
+      color: var(--main-color);
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .set-offer {
+      background: var(--main-color);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .set-offer h3 {
+      color: white;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+
+    .set-offer p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    .set-price {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .set-price .original {
+      text-decoration: line-through;
+      color: #ccc;
+      font-size: 1.5rem;
+      margin-right: 20px;
+    }
+
+    .set-price .current {
+      color: var(--highlight);
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    .process {
+      padding: 80px 0;
+    }
+
+    .process-steps {
+      display: flex;
+      justify-content: space-between;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .process-step {
+      text-align: center;
+      width: 30%;
+    }
+
+    .process-step .number {
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+      border-radius: 50%;
+      background: var(--accent-color);
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0 auto 20px;
+    }
+
+    .process-step h4 {
+      color: var(--main-color);
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+    }
+
+    .testimonials {
+      background: #f9f9f9;
+      padding: 80px 0;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .testimonial-card {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .testimonial-card p.quote {
+      font-style: italic;
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    .testimonial-card .author {
+      font-weight: bold;
+      color: var(--main-color);
+    }
+
+    .cta {
+      text-align: center;
+      background: var(--accent-color);
+      color: white;
+      padding: 80px 20px;
+      margin: 0;
+    }
+
+    .cta h3 {
+      font-size: 2.2rem;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .cta p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    .limited-offer {
+      font-size: 1.1rem;
+      background: rgba(255,255,255,0.2);
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    footer {
+      background: #003049;
+      padding: 40px 20px;
+      color: white;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      text-align: left;
+    }
+
+    .footer-section h4 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: var(--highlight);
+    }
+
+    .footer-section a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .footer-section a:hover {
+      text-decoration: underline;
+    }
+
+    .copyright {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #aaa;
+      text-align: center;
+    }
+
+    /* レスポンシブ対応 */
+    @media (max-width: 900px) {
+      .coffee-set-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .process-steps {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .process-step {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 40px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        padding: 20px;
+      }
+      
+      nav {
+        margin-top: 15px;
+      }
+      
+      nav a {
+        margin: 0 10px;
+      }
+      
+      .hero h2 {
+        font-size: 2rem;
+      }
+      
+      .coffee-set-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .set-price {
+        flex-direction: column;
+      }
+      
+      .set-price .original {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
     }
   </style>
 </head>
@@ -35,68 +441,159 @@
   <header>
     <h1>REARCAR COFFEE</h1>
     <nav>
-      <a href="#products">商品一覧</a>
+      <a href="#coffee-set">おすすめセット</a>
       <a href="#about">私たちについて</a>
-      <a href="#contact">お問い合わせ</a>
+      <a href="#process">お届けまで</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h2>コーヒーで始まる私の朝</h2>
-    <p>日々のリズムに、少しの余白と豊かさを</p>
-  </section>
-
-  <section class="section intro">
-    <h3>毎日をちょっとだけ、丁寧に。</h3>
-    <p>REARCAR COFFEEは、心とからだにやさしい一杯を届けるD2Cブランド。自然由来のスペシャルティコーヒーを、スタイリッシュにお届けします。</p>
-  </section>
-
-  <section class="section">
-    <h3>コーヒーが届くまで</h3>
-    <div class="image-grid">
-      <img src="images/AdobeStock_93001195.jpg" alt="チェリーから焙煎豆まで">
-      <img src="images/AdobeStock_182852283.jpg" alt="選別作業中の様子">
-      <img src="images/P1070786.jpg" alt="色分けされたチェリーと豆">
-      <img src="images/cruzeiro.jpg" alt="ブラジル産麻袋">
-      <img src="images/P1070756.jpg" alt="焙煎前後の豆比較">
-      <img src="images/P1080057.jpg" alt="焙煎機のある工房">
+    <div class="hero-content">
+      <h2>厳選された3種の贅沢コーヒーセット</h2>
+      <p>自宅で味わう、小さな幸せのひととき。<br>焙煎からお届けまで、すべての工程にこだわりました。</p>
+      <a href="#coffee-set" class="cta-button">詳しく見る</a>
     </div>
   </section>
 
-  <section id="products" class="section products">
-    <h3>おすすめ商品</h3>
-    <div class="products-grid">
-      <div class="product-card">
-        <img src="https://source.unsplash.com/400x400/?coffee,beans" alt="エチオピア・イルガチェフ">
-        <h4>エチオピア・イルガチェフ</h4>
-        <p>フローラルで柑橘系の華やかさ。</p>
+  <section id="coffee-set" class="coffee-set">
+    <div class="coffee-set-title">
+      <h2>あなたへの贈り物、3つの香り</h2>
+      <p>それぞれの個性を生かした3種のスペシャルティコーヒー。<br>毎日の気分に合わせてお楽しみください。</p>
+    </div>
+    
+    <div class="coffee-set-grid">
+      <div class="coffee-card">
+        <img src="images/ethiopia-beans.jpg" alt="エチオピア・イルガチェフ">
+        <span class="badge">人気No.1</span>
+        <div class="coffee-card-content">
+          <h4>エチオピア・イルガチェフ</h4>
+          <span class="subtitle">華やかな風味のライトロースト</span>
+          <p>花のような香りと柑橘系の爽やかな酸味。朝の目覚めに最適な一杯です。</p>
+          <div class="price">1,800円（税込）</div>
+        </div>
       </div>
-      <div class="product-card">
-        <img src="https://source.unsplash.com/400x400/?coffee,cup" alt="モカ・ブレンド">
-        <h4>モカ・ブレンド</h4>
-        <p>やさしい酸味とまろやかなコク。</p>
+      
+      <div class="coffee-card">
+        <img src="images/moka-blend.jpg" alt="モカ・ブレンド">
+        <div class="coffee-card-content">
+          <h4>モカ・ブレンド</h4>
+          <span class="subtitle">バランスの取れたミディアムロースト</span>
+          <p>やさしい酸味とまろやかなコク。どんな時間帯にも合わせやすい万能な味わいです。</p>
+          <div class="price">1,600円（税込）</div>
+        </div>
       </div>
-      <div class="product-card">
-        <img src="https://source.unsplash.com/400x400/?coffee,gift" alt="シーズナルギフト">
-        <h4>季節のギフトBOX</h4>
-        <p>大切な人に、コーヒーの贈り物を。</p>
+      
+      <div class="coffee-card">
+        <img src="images/gift-box.jpg" alt="シーズナルギフト">
+        <span class="badge">限定品</span>
+        <div class="coffee-card-content">
+          <h4>季節のギフトセット</h4>
+          <span class="subtitle">特別なオリジナルブレンド</span>
+          <p>季節ごとに変わる特製ブレンド。チョコやナッツを思わせる風味豊かな味わいです。</p>
+          <div class="price">2,200円（税込）</div>
+        </div>
       </div>
     </div>
   </section>
+  
+  <section class="set-offer">
+    <h3>3種セット特別価格</h3>
+    <p>単品で購入するより20%もお得な特別セット。すべての味わいを体験できる、コーヒー好きのための贅沢な詰め合わせです。</p>
+    <div class="set-price">
+      <div class="original">5,600円</div>
+      <div class="current">4,480円（税込）</div>
+    </div>
+    <a href="#" class="cta-button">今すぐ購入する</a>
+    <div class="limited-offer">初回送料無料キャンペーン実施中！</div>
+  </section>
 
-  <section id="about" class="section about">
+  <section id="about" class="section">
     <h3>REARCAR COFFEEについて</h3>
-    <p>東京発の小さなロースタリーから、あなたのもとへ。私たちはサステナブルな豆を厳選し、12年以上の焙煎経験をもとに、豆ごとに最適な焙煎を施しています。</p>
+    <p>東京発の小さなロースタリーから、あなたのもとへ。<br>私たちはサステナブルな豆を厳選し、12年以上の焙煎経験をもとに、豆ごとに最適な焙煎を施しています。<br>豆の個性を最大限に引き出すことにこだわり、一杯一杯を丁寧に仕上げています。</p>
   </section>
 
-  <section id="contact" class="cta">
+  <section id="process" class="process">
+    <div class="section">
+      <h3>コーヒーが届くまで</h3>
+      
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="number">1</div>
+          <h4>厳選した豆を焙煎</h4>
+          <p>その日に焙煎した新鮮な豆をお届けするため、ご注文後に焙煎しています。</p>
+        </div>
+        
+        <div class="process-step">
+          <div class="number">2</div>
+          <h4>丁寧な包装</h4>
+          <p>風味を逃さないよう専用バルブ付きパッケージで鮮度を保ちます。</p>
+        </div>
+        
+        <div class="process-step">
+          <div class="number">3</div>
+          <h4>迅速な配送</h4>
+          <p>焙煎から48時間以内に発送し、新鮮な状態でお手元にお届けします。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <div class="section">
+      <h3>お客様の声</h3>
+      
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <p class="quote">毎朝の楽しみになっています。特にエチオピアの香りが素晴らしく、自宅でこんなに美味しいコーヒーが飲めるなんて感動です。</p>
+          <p class="author">東京都 S.K様</p>
+        </div>
+        
+        <div class="testimonial-card">
+          <p class="quote">3種セットは飲み比べができて満足度が高いです。友人へのギフトにも好評でした。季節のブレンドの香りが本当に素敵です。</p>
+          <p class="author">神奈川県 M.T様</p>
+        </div>
+        
+        <div class="testimonial-card">
+          <p class="quote">他店と比べても鮮度が違います。豆から挽いて飲むと本当に香りが違いますね。定期的に購入させていただいています。</p>
+          <p class="author">千葉県 K.O様</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
     <h3>あなたの「お気に入りの豆」、見つけませんか？</h3>
-    <p>オンラインストアでは、初回送料無料キャンペーン中。まずはお試しセットから。</p>
-    <button>今すぐ見る</button>
+    <p>オンラインストアでは、初回送料無料キャンペーン中。<br>3種セットなら、あなたにぴったりの一杯が必ず見つかります。</p>
+    <a href="#" class="cta-button">今すぐ購入する</a>
   </section>
 
   <footer>
-    &copy; 2025 REARCAR COFFEE. All Rights Reserved.
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>REARCAR COFFEE</h4>
+        <p>毎日をちょっとだけ、丁寧に。<br>心とからだにやさしい一杯をお届けします。</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>ショップ情報</h4>
+        <a href="#">商品一覧</a>
+        <a href="#">よくある質問</a>
+        <a href="#">お支払い方法</a>
+        <a href="#">配送について</a>
+      </div>
+      
+      <div class="footer-section">
+        <h4>お問い合わせ</h4>
+        <a href="#">お問い合わせフォーム</a>
+        <a href="#">メールマガジン登録</a>
+        <a href="#">特定商取引法に基づく表記</a>
+        <a href="#">プライバシーポリシー</a>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      &copy; 2025 REARCAR COFFEE. All Rights Reserved.
+    </div>
   </footer>
 </body>
 </html>
